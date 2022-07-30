@@ -1,0 +1,19 @@
+stages:
+    - build
+    - test
+run_tests:
+    stage: test
+    image: maven:3-openjdk-11
+    script:
+        - mvn test
+    only:
+        - main
+        - merge_requests    
+Build:
+    stage: build
+    image: maven:3-openjdk-11
+    script:
+        - mvn compile
+    only:
+        - main
+        - merge_requests     
